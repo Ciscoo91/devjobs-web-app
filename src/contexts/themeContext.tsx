@@ -9,10 +9,6 @@ type ThemeProviderProps = {
     children: ReactNode
 }
 
-const toggleTheme = (theme: string) =>{
-    return theme === "light" ? "dark" : "light"
-}
-
 export const ThemeContext = createContext<ThemeContextType>({theme: "light", toggleTheme: () => {}})
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({children}: ThemeProviderProps) => {

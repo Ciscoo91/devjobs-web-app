@@ -23,5 +23,5 @@ dist-ssr
 *.sln
 *.sw?
 
-src/types.ts
-src/components/
+src/helpers.ts
+src/hooks

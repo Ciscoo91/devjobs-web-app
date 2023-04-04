@@ -1,0 +1,58 @@
+.card-light{
+    background-color: var(--white-color);
+}
+
+.card-dark{
+    background-color: var(--dark-color);
+}
+
+.card{
+    width: calc(350px - (32px*2));
+    height: calc(228px - (49px + 35px));
+    padding: 49px 32px 35px 32px;
+    position: relative;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.logo{
+    position: absolute;
+    top: -25px;
+    left: 32px;
+    width: 50px;
+    height: 50px;
+    border-radius: 15px;
+    display: grid;
+    place-content: center;
+}
+
+.description{
+    color: var(--gray-color)
+}
+
+
+.position{
+    
+    font-weight: bold;
+    color: var(--midnight-color);
+    margin: 5px 0;
+    max-width: 100%;
+}
+
+.card-dark .position {
+    color: var(--white-color);
+}
+
+.company{
+    color: var(--gray-color);
+    margin-bottom: 50px;
+}
+
+.location{
+    color: var(--primary-color);
+    font-weight: bold;
+}
+
+

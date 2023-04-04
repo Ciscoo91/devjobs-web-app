@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;600;700&display=swap');
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Kumbh Sans', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -12,16 +14,30 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --primary-color: hsl(235,69%,61%);
+  --secondary-color: hsl(235,82%,77%);
+  --dark-color: hsl(219,29%,14%);
+
+  --light-secondary-color: hsl(217,26%,97%);
+  --light-primary-color: hsl(234,76.9%,76.3%);
+  --light-dark-color:hsl(217, 5.8%, 43.7%);
+
+  --midnight-color: hsl(219,29%,10%);
+  
+  --white-color: hsl(0,0%,100%);
+  --gray-color: hsl(212,23%,69%);
+  --dark-gray-color: hsl(214,17%,51%);
+
+  --font-family: 'Kumbh Sans', sans-serif;
+  --container-width: 1110px;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+*{
+  margin: 0;
+  padding: 0;
 }
-a:hover {
-  color: #535bf2;
-}
+
 
 body {
   margin: 0;
@@ -29,31 +45,64 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  font-family: var(--font-family);
+  background-color: var(--light-secondary-color);
+}
+
+.container {
+  max-width: var(--container-width);
+  margin: auto;
 }
 
 h1 {
-  font-size: 3.2em;
+  font-size: 2rem;
   line-height: 1.1;
+  color: var(--white-color)
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+input{
+  border: none;
   cursor: pointer;
-  transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
+
+input[type="text"]{
+  padding: 28px 17px;
+  outline: none;
+  color: var(--midnight-color);
+  caret-color: var(--light-primary-color);
+  background-color: inherit;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+input[type="checkbox"]{
+  appearance: none;
+  background-color: var(--gray-color);
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 3px;
 }
+
+input[type="checkbox"]:hover{
+  background-color: var(--light-primary-color);
+}
+
+input[type="checkbox"]:checked {
+  background-color: var(--primary-color);
+  background-image: url("assets/desktop/icon-check.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+button{
+  outline: none;
+  border:none;
+  font-weight: 600;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {
