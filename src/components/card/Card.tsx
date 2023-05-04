@@ -2,7 +2,6 @@ import React, { useContext } from 'react'
 import "./Card.css"
 import { ThemeContext } from '../../contexts/themeContext'
 import { JobPosting } from '../../types'
-import JobDetail from '../../pages/JobDetail'
 
 type CardProps = {
   jobPost: JobPosting

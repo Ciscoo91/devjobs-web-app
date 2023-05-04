@@ -5,7 +5,7 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
+  /* color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
 
@@ -13,7 +13,7 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%; */
 
   --primary-color: hsl(235,69%,61%);
   --secondary-color: hsl(235,82%,77%);
@@ -47,6 +47,18 @@ body {
   min-height: 100vh;
   font-family: var(--font-family);
   background-color: var(--light-secondary-color);
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}
+
+.page{
+  width: 1440px;
+  min-height: 100vh;
+  min-width: 100vw;
+  margin: auto;
 }
 
 .container {
@@ -103,8 +115,31 @@ button:hover{
   cursor: pointer;
 }
 
+.page{
+  width: 1440px;
+}
 
-@media (prefers-color-scheme: light) {
+@media screen and (max-width: 768px){
+  
+  :root{
+    --container-width: 689px;
+  }
+  
+  .page {
+    width: 768px;
+  }
+}
+
+@media screen and (max-width: 375px){
+  .page{
+    width: 375px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -115,4 +150,4 @@ button:hover{
   button {
     background-color: #f9f9f9;
   }
-}
+} */

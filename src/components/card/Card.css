@@ -55,4 +55,9 @@
     font-weight: bold;
 }
 
-
+@media screen and (max-width: 768px) {
+    .card{
+        width: calc(339px - (32px*2));
+        height: calc(253px - (49px + 35px));
+    }
+}

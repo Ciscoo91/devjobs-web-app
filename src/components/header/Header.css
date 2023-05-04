@@ -1,18 +1,19 @@
 .header{
-	background-image: url("assets/desktop/bg-pattern-header.svg");
+	background-image: url("../../assets/desktop/bg-pattern-header.svg");
 	background-repeat: no-repeat;
 	height: 162px;
 	width: 1440px;
-	margin: auto;
+	margin: 0 auto;
 }
 
 
 .header .container{
 	width: 1110px;
 	height: 100%;
-	position: relative;
 	display: flex;
+	flex-direction: row;
 	justify-content: space-between;
+	align-items: flex-start;
 	padding-top: 44px;
 }
 
@@ -72,4 +73,29 @@
 
 .switch input:checked + span:before {
 	left: 30px;
+}
+
+@media screen and (max-width: 768px){
+
+	.header {
+		width: 768px;
+	}
+	.header .container{
+		width: 689px;
+	}
+
+	.image{
+		background-image: url("../../assets/tablet/bg-pattern-header.svg");
+	}
+}
+
+@media screen and (max-width: 375px) {
+	.header{
+		width: 100%;
+		background-image: url("../../assets/mobile/bg-pattern-header.svg");
+	}
+
+	.header .container{
+		width: 359px;
+	}
 }

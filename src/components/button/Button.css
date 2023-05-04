@@ -1,25 +1,14 @@
-.dark{
-    background-color: var(--dark-color);
-}
-
-.dark:hover{
-    background-color: var(--light-dark-color);
-}
-
-.light{
-    background-color: var(--primary-color);
-}
-
-.light:hover{
-    background-color: var(--light-primary-color);
-}
-
 .button {
     padding: .3rem .8rem;
-    min-width: 141px;
+    max-width: 141px;
+    min-width: 80px;
     min-height: 48px;
     font-size: 1rem;
     border-radius: 5px;
     outline: none;
     color: var(--white-color);
+    background-color: var(--primary-color);
+}
+.button:hover{
+    background-color: var(--light-primary-color);
 }

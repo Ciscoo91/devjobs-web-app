@@ -1,6 +1,10 @@
 import { useContext } from "react";
+import {Link} from "react-router-dom"
 import { ThemeContext } from "../../contexts/themeContext";
 import "./Header.css"
+import sunIcon from "../../assets/desktop/icon-sun.svg"
+import moonIcon from "../../assets/desktop/icon-moon.svg"
+
 const Header = () => {
 
     const {toggleTheme} = useContext(ThemeContext)
@@ -8,14 +12,16 @@ const Header = () => {
     return (     
             <header className="header">
                 <div className="container">
-                    <h1>devjobs</h1>
+                    <Link to="/">
+                        <h1 className="site-title">devjobs</h1>
+                    </Link>
                     <div className="icon-switch">
-                        <img src="assets/desktop/icon-sun.svg" alt="sun icon for light mode" />
+                        <img src={sunIcon} alt="sun icon for light mode" />
                         <label className="switch">
                             <input type="checkbox" onChange={toggleTheme} />
                             <span></span>
                         </label>
-                        <img src="assets/desktop/icon-moon.svg" alt="moon icon for dark mode" />
+                        <img src={moonIcon} alt="moon icon for dark mode" />
                     </div>
                 </div>
             </header>
