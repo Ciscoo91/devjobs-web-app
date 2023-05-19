@@ -11,10 +11,8 @@ const Header = () => {
 
     return (     
             <header className="header">
-                <div className="container">
-                    <Link to="/">
-                        <h1 className="site-title">devjobs</h1>
-                    </Link>
+                <div className="header--container">
+                    <h1 className="site-title"><Link to="/">devjobs</Link></h1>
                     <div className="icon-switch">
                         <img src={sunIcon} alt="sun icon for light mode" />
                         <label className="switch">

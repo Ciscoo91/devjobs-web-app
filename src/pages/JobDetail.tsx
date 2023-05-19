@@ -1,20 +1,16 @@
 import { useState, useEffect, useContext } from 'react'
 import {useParams} from 'react-router-dom'
+import { ThemeContext } from '../contexts/themeContext'
 import Button from '../components/button/Button'
 import Jobs from "../data.json"
-import styles from './JobDetail.module.css'
 import Layout from '../Layout/Layout'
-import useJobPostingIcon from '../hooks/useJobPostingIcon'
 import { JobPosting } from '../types'
-import { ThemeContext } from '../contexts/themeContext'
+import './JobDetail.css'
 
 type RouteParams = {
   jobId : string
 }
 
-type JobPostingState = {
-  jobState? : JobPosting | null
-}
 
 export default function JobDetail() {
 
@@ -29,60 +25,58 @@ export default function JobDetail() {
     setJobItem(filteredJob);
   }, [id])
 
-  // const icon = useJobPostingIcon(jobItem)
-
   if(!jobItem){
     return <div>Loading....</div>
   }
 
   return (
     <Layout>
-      <div className={styles.detailsPage}>
-        <div className={styles.container}>
-          <div className={styles.headCard}>
-            <div className={styles.companyLogo} style={{backgroundColor: jobItem.logoBackground}}>
+      <div className="details-page">
+        <div className="details-page__container">
+          <div className={`head-card head-card--${theme}`}>
+            <div className="company-logo" style={{backgroundColor: jobItem.logoBackground}}>
               <img src={jobItem.logo} alt="logo of the company"/>
             </div>
-            <div className={styles.companyInfo}>
+            <div className="company-info">
               <div>
-                <h3 className={styles.companyName}>{jobItem.company}</h3>
-                <span className={styles.companyWebsite}>{jobItem.website}</span>
+                <h3 className="company-info__name">{jobItem.company}</h3>
+                <span className="compani-info__website">{jobItem.website}</span>
               </div>
               <Button><a href={jobItem.website}>Company Site</a></Button>
             </div>
           </div>
-          <main className={styles.mainContent}>
-            <div className={styles.mainCard}>
+          <main className={`main-content main-content--${theme}`}>
+            <div className="main-card">
               <div>
-                <p className={styles.description}>{`${jobItem.postedAt} . ${jobItem.contract}`}</p>
-                <h3 className={styles.position}>{jobItem.position}</h3>
-                <span className={styles.location}>{jobItem.location}</span>
+                <p className="main-card__description">{`${jobItem.postedAt} . ${jobItem.contract}`}</p>
+                <h3 className="main-card__position">{jobItem.position}</h3>
+                <span className="main-card__location">{jobItem.location}</span>
               </div>
               <Button>Apply Now</Button>
             </div>
-            <p className={styles.description}>{jobItem.description}</p>
-            <section className={styles.requirements}>
-              <h4 className={styles.requirementsTitle}>Requirements</h4>
-              <p className={styles.requirementsContent}>{jobItem.requirements.content}</p>
-              <ul className={styles.itemsList}>
-                {jobItem.requirements.items.map((item, index) => <li className={styles.itemsListItem} key={index}>{item}</li>)}
+            <p className="description">{jobItem.description}</p>
+            <section className="requirements">
+              <h4 className="requirements__title">Requirements</h4>
+              <p className="requirements__content">{jobItem.requirements.content}</p>
+              <ul className="items-list">
+                {jobItem.requirements.items.map((item, index) => <li className="items-list__item" key={index}>{item}</li>)}
               </ul>
             </section>
-            <section className={styles.role}>
-              <h4 className={styles.roleTitle}>What You Will Do</h4>
-              <p className={styles.roleContent}>{jobItem.role.content}</p>
-              <ol className={styles.itemsList} >
-                {jobItem.role.items.map((item, index) => <li className={styles.itemsListItem} key={index}>{item}</li>)}
+            <section className="role">
+              <h4 className="role__title">What You Will Do</h4>
+              <p className="role__content">{jobItem.role.content}</p>
+              <ol className="items-list" >
+                {jobItem.role.items.map((item, index) => <li className="items-list__item" key={index}>{item}</li>)}
               </ol>
             </section>
           </main>
         </div>
       </div>
-      <footer className={styles.footer}>
-        <div className={styles.container}>
+      <footer className={`footer footer-${theme}`}>
+        <div className="footer__container">
           <div>
-            <h3 className={styles.footerPosition}>{jobItem.position}</h3>
-            <span className={styles.footerCompany}>{jobItem.company}</span>
+            <h3 className="footer__position">{jobItem.position}</h3>
+            <span className="footer__company">{jobItem.company}</span>
           </div>
           <Button>Apply Now</Button>
         </div>

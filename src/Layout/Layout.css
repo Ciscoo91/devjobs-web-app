@@ -2,3 +2,15 @@
     background-color: var(--midnight-color);
 }
 
+
+@media screen and (max-width: 820px){
+    .page{
+        width: 100vw;
+    }
+}
+
+@media screen and (max-width: 428px){
+    .page{
+        width: 100vw;
+    }
+}

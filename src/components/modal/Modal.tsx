@@ -18,9 +18,9 @@ export default function Modal({ setShowModal, showModal}: ModalProps) {
     }
 
     return (
-        <div>
+        <div className={theme}>
             {showModal && <div onClick={(event) =>setShowModal(false)} className={styles.overlay}></div>}
-            <div className={`${styles.modal} ${theme}`}>
+            <div className={styles.modal}>
                 <div className={styles.formControl}>
                     <img src="assets/desktop/icon-location.svg" alt="" />
                     <input placeholder="Filter by location..." type="text" />
@@ -28,7 +28,7 @@ export default function Modal({ setShowModal, showModal}: ModalProps) {
                 <div className={styles.formControl}>
                     <input name="fullTime" id="fullTime" type="checkbox" />
                     <label htmlFor="fullTime">Full Time Only</label>
-                    <button className={`${styles.button} ${theme}`} onClick={(event) => closeModal(event)}>Search</button>
+                    <button className={styles.button} onClick={(event) => closeModal(event)}>Search</button>
                 </div>
             </div>
         </div>

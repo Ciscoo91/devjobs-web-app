@@ -13,6 +13,9 @@
   z-index: 10;
 }
 
+.dark .modal{
+  background-color: var(--midnight-color);
+}
 
 .overlay{
   content: "";
@@ -46,4 +49,6 @@
   grid-column: 1 / -1;
   width: 100%;
   color: var(--white-color);
+  background-color: var(--primary-color);
 }
+

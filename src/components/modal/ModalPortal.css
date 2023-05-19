@@ -2,6 +2,19 @@
     border-radius: 5px;
 }
 
+.search__icon path{
+    stroke: #fff;
+    fill: #fff;
+}
+
 .icon-button{
     background-color: #fff;
+}
+
+.filter__icon{
+    background: #fff;
+}
+
+.dark .filter__icon{
+    background: var(--midnight-color);
 }

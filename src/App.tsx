@@ -16,30 +16,28 @@ function App(){
 
   return (
     <Layout>
-      <div className={`app-${theme}`}>
-        <main className="main-content">
-          <form className={`form form-${theme}`} onSubmit={(event) => event.preventDefault()}>
-              <div className="form-control">
-                  <img src={iconSearch} alt="loupe logo" />
-                  <input placeholder="Filter by title, companies, expertise..." type="text" className='company-input'/>
-                  <ModalPortal />
-              </div>
-              <div className="form-control">
-                  <img src={iconLocation} alt="" />
-                  <input placeholder="Filter by location..." type="text" />
-              </div>
-              <div className="form-control">
-                  <input id="fullTime" type="checkbox" />
-                  <label htmlFor="fullTime">Full Time Only</label>
-                  <Button>Search</Button>
-              </div>
-          </form>
-          <div className="card-container">
-            {Jobs?.map(job => <Link key={job.id} to={job.id.toString()}><Card  jobPost={job}/></Link>)}
-            <Button>Load More</Button>
-          </div>
-        </main>
-      </div>
+      <main className={`main-content app-${theme}`}>
+        <form className={`form form-${theme}`} onSubmit={(event) => event.preventDefault()}>
+            <div className="form-control">
+                <img src={iconSearch} alt="loupe logo" />
+                <input placeholder="Filter by title, companies, expertise..." type="text" className='company-input'/>
+                <ModalPortal />
+            </div>
+            <div className="form-control">
+                <img src={iconLocation} alt="" />
+                <input placeholder="Filter by location..." type="text" />
+            </div>
+            <div className="form-control">
+                <input id="fullTime" type="checkbox" />
+                <label htmlFor="fullTime">Full Time Only</label>
+                <Button>Search</Button>
+            </div>
+        </form>
+        <div className="card-container">
+          {Jobs?.map(job => <Link key={job.id} to={job.id.toString()}><Card  jobPost={job}/></Link>)}
+          <Button>Load More</Button>
+        </div>
+      </main>
     </Layout>
   )
 }
