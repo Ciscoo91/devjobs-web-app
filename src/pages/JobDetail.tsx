@@ -78,7 +78,7 @@ export default function JobDetail() {
             <h3 className="footer__position">{jobItem.position}</h3>
             <span className="footer__company">{jobItem.company}</span>
           </div>
-          <Button>Apply Now</Button>
+          <button className='button'>Apply Now</button>
         </div>
       </footer>
     </Layout>    
