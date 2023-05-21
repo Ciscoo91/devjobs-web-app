@@ -85,7 +85,7 @@
 }
 
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 820px) {
 
 	.form{
 		grid-template-columns: 224px 213px 252px;
@@ -124,7 +124,7 @@
 	}
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (max-width: 428px) {
 
 	.app{
 		width: 100%;
