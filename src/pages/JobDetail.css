@@ -211,19 +211,15 @@
 
 @media screen and (max-width: 820px){
 
-    .details-page__container{
-        width: 89%;
-    }
-    
-    .head-card{
-        width: 90%;
-    }
-    
-    .main-content{
+    .details-page, .main-content{
         width: 90%;
     }
 
-    .footer{
+    .footer, .head-card{
+        width: 100%;
+    }
+
+    .footer__container{
         width: 90%;
     }
 }
@@ -232,11 +228,7 @@
 
 
     .details-page{
-        width: 100vw;
-    }
-
-    .head-card .main-content {
-        width: 87.2%;
+        width: 90%;
     }
 
     .head-card {
@@ -247,6 +239,7 @@
         height: 205px;
         position: relative;
         border-radius: 6px;
+        width: 100%;
     }
 
     .company-logo{
