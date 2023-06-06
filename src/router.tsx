@@ -1,5 +1,5 @@
 import {createBrowserRouter} from "react-router-dom"
-import App from "./App"
+import App from "./pages/Home"
 import JobDetail from "./pages/JobDetail"
 
 export const router = createBrowserRouter([

@@ -71,12 +71,13 @@
 }
 
 .card-container{
-	width: var(---container-width);
+	width: 100%;
 	margin: 105px 0;
 	display: grid;
-	grid-template-columns: auto auto auto;
+	grid-template-columns: 32% 32% 32%;
 	grid-template-rows: auto;
-	gap: 65px 30px;
+	min-height: 100vh;
+	gap: 62px 1.857%;
 }
 
 .card-container .button {
@@ -88,7 +89,7 @@
 @media screen and (max-width: 820px) {
 
 	.form{
-		grid-template-columns: 224px 213px 252px;
+		grid-template-columns: 33% 30% 37%; 
 	}
 	.form-control{
 		width: auto;
@@ -140,6 +141,7 @@
 	}
 
 	.form{
+		
 		width: 327px;
 		display: flex;
 		padding-left: 16px;
