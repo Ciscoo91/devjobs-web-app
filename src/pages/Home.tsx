@@ -31,7 +31,7 @@ function App(){
         fulltime: fulltime ? "Full Time": null
       }   
 
-      const response = await fetch(`http://localhost:8000/query`, {
+      const response = await fetch(`${BASE_API_URL}/query`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -53,7 +53,7 @@ function App(){
 
   useEffect(()=>{
     const getJobPosts = async () => {
-      const response = await fetch(`http://localhost:8000/`)
+      const response = await fetch(`${BASE_API_URL}/`)
       const data = await response.json()
       setJobPosts(data)
     }
