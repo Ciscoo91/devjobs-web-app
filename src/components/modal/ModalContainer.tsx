@@ -1,13 +1,16 @@
 import React, {useContext, useState} from 'react'
-import {createPortal} from "react-dom"
 import Modal from './Modal'
-import "./ModalPortal.css"
+import "./ModalContainer.css"
 import {ReactComponent as IconSearch} from '../../assets/desktop/icon-search.svg'
 import {ReactComponent as IconFilter} from '../../assets/mobile/icon-filter.svg'
 import { ThemeContext } from '../../contexts/themeContext'
+import { JobPosting } from '../../types'
 
+type ModalPortalProps = {
+    setJobPosts: React.Dispatch<React.SetStateAction<JobPosting[]>>
+}
 
-export default function ModalPortal() {
+export default function ModalPortal({setJobPosts} : ModalPortalProps) {
 
     const [showModal, setShowModal] = useState<boolean>(false)
     const {theme} = useContext(ThemeContext)
@@ -20,16 +23,14 @@ export default function ModalPortal() {
     return (
         <>
            <button className="filter-icon" onClick={(event) => renderModal(event)}>
-                <IconFilter className="filter__icon"/>
+                <IconFilter className="filter__icon" 
+                    style={theme == "light" ? {backgroundColor: "#FFF"} : {backgroundColor: "#19212e"}}
+                />
             </button>
             <button className={`mobile-search-button ${theme}`}>
                 <IconSearch className='search__icon' />
             </button>
-            {showModal && <div className='overlay'></div>}
-            {showModal && createPortal(
-                <Modal showModal={showModal} setShowModal={() => setShowModal(false)} />,
-                document.body
-            )}
+            {showModal && <Modal setShowModal={setShowModal} showModal={showModal} setJobPosts={setJobPosts}/>}
         </>
     )
 }

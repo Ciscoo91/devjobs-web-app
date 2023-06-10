@@ -3,21 +3,24 @@
   grid-template-columns: 100%;
   grid-template-rows: 72px auto;
   box-shadow: rgba(100, 100, 111, 0.3) 0px 7px 29px 0px;
-  background-color: var(--white-color);
   border-radius: 6px;
   position: absolute;
   width: 327px;
   height: 217px;
-  top: 225px;
+  top: 50%;
   left: 24px;
-  z-index: 10;
+  z-index: 20;
 }
 
-.dark .modal{
-  background-color: var(--midnight-color);
+.modal-light{
+  background-color: var(--white-color);
 }
 
-.overlay{
+.modal-dark{
+  background-color: var(--dark-color);
+}
+
+.modal-overlay{
   content: "";
   position: fixed;
   bottom: 0;
@@ -25,27 +28,27 @@
   left: 0;
   width: 100vw;
   background-color: rgba(0,0,0,0.5);
-  z-index: 0;
+  z-index: 10;
 }
 
-.formControl{
+.modal-form-control{
   padding: 24px;
 }
 
-.formControl:nth-child(1){
+.modal-form-control:nth-child(1){
   border-bottom: 1px solid var(--gray-color);
   display: flex;
   align-items: center;
 }
 
-.formControl:nth-child(2){
+.modal-form-control:nth-child(2){
   display: grid;
   grid-gap: 0 22px;
   grid-template-columns: 24px 240px;
   grid-template-rows: auto auto;
 }
 
-.button{
+.modal-button{
   grid-column: 1 / -1;
   width: 100%;
   color: var(--white-color);

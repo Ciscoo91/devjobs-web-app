@@ -4,15 +4,18 @@ import './Home.css'
 import Button from '../components/button/Button'
 import Card from '../components/card/Card'
 import Layout from '../Layout/Layout'
-import ModalPortal from '../components/modal/ModalPortal'
+import ModalContainer from '../components/modal/ModalContainer'
 import iconSearch from '../assets/desktop/icon-search.svg'
 import iconLocation from '../assets/desktop/icon-location.svg'
 import { JobPosting } from '../types'
 
+
+const BASE_API_URL = "https://devjobs-app-api.onrender.com"
+
 function App(){
   
   const {theme} = useContext(ThemeContext)
-  const [jobPosts, setJobPosts] = useState([])
+  const [jobPosts, setJobPosts] = useState<JobPosting[]>([])
   const [filter, setFilter] = useState<string>("")
   const [location, setLocation] = useState<string>("")
   const [fulltime, setFulltime] = useState<boolean>(false)
@@ -28,7 +31,7 @@ function App(){
         fulltime: fulltime ? "Full Time": null
       }   
 
-      const response = await fetch("http://localhost:8000/query", {
+      const response = await fetch(`http://localhost:8000/query`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -39,10 +42,7 @@ function App(){
       if (response.ok) {
         const data = await response.json();
         setJobPosts(data)
-        console.log(data);
-        // Process the received data as needed
       } else {
-        // Handle error cases
         console.error("Failed to fetch data:", response.status, response.statusText);
       }
     } catch (error) {
@@ -53,7 +53,7 @@ function App(){
 
   useEffect(()=>{
     const getJobPosts = async () => {
-      const response = await fetch("http://localhost:8000/")
+      const response = await fetch(`http://localhost:8000/`)
       const data = await response.json()
       setJobPosts(data)
     }
@@ -68,7 +68,7 @@ function App(){
             <div className="form-control">
                 <img src={iconSearch} alt="loupe logo" />
                 <input placeholder="Filter by title, companies, expertise..." type="text" className='company-input' value={filter} name="filter" onChange={(e) => setFilter(e.target.value)}/>
-                <ModalPortal />
+                <ModalContainer setJobPosts={setJobPosts} />
             </div>
             <div className="form-control">
                 <img src={iconLocation} alt="" />
