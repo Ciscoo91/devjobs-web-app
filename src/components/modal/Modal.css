@@ -7,8 +7,9 @@
   position: absolute;
   width: 327px;
   height: 217px;
-  top: 50%;
-  left: 24px;
+  top: 25%;
+  left: 8%;
+  transform : translateY(-50%);
   z-index: 20;
 }
 

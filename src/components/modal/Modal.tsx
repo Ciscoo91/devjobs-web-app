@@ -1,44 +1,46 @@
-import React, { useContext } from 'react'
+import { useContext, Dispatch, SetStateAction, ChangeEventHandler, FormEvent, FormEventHandler } from 'react'
 import "./Modal.css"
 import { ThemeContext } from '../../contexts/themeContext'
-import { JobPosting } from '../../types'
 import {motion} from "framer-motion"
 import iconLocation from "../../assets/desktop/icon-location.svg"
 
 type ModalProps = {
-    setShowModal: React.Dispatch<React.SetStateAction<boolean>>
+    setShowModal: Dispatch<SetStateAction<boolean>>
     showModal: boolean,
-    setJobPosts : React.Dispatch<React.SetStateAction<JobPosting[]>>
+    handleSearch: FormEventHandler
+    handleLocationChange: ChangeEventHandler<HTMLInputElement>,
+    handleFulltimeChange: ChangeEventHandler<HTMLInputElement>
 }
 
-export default function Modal({ setShowModal, showModal, setJobPosts}: ModalProps) {
+export default function Modal({ setShowModal, showModal, handleFulltimeChange, handleLocationChange, handleSearch}: ModalProps) {
 
     const {theme} = useContext(ThemeContext)
-
 
     function closeModal(event: React.MouseEvent<HTMLButtonElement, MouseEvent>){
         event.preventDefault()
         setShowModal(false)
     }
 
+
     return (
         <div className={`${theme}`}>
             {showModal && <div onClick={() =>setShowModal(false)} className="modal-overlay"></div>}
-            <motion.div 
+            <motion.form 
                 className={`modal modal-${theme}`}
                 initial={{opacity: 0, scale: 0}}
                 animate={{opacity: 1, scale: 1}}
+                onSubmit={handleSearch}
             >
                 <div className="modal-form-control">
-                    <img src={iconLocation} alt="" />
-                    <input placeholder="Filter by location..." type="text" />
+                    <img src={iconLocation} alt="location icon representation" />
+                    <input placeholder="Filter by location..." type="text" onChange={(e) => handleLocationChange(e)} />
                 </div>
                 <div className="modal-form-control">
-                    <input name="fullTime" id="fullTime" type="checkbox" />
+                    <input name="fullTime" id="fullTime" type="checkbox" onChange={handleFulltimeChange}/>
                     <label htmlFor="fullTime">Full Time Only</label>
-                    <button className="modal-button" onClick={(event) => closeModal(event)}>Search</button>
+                    <button className="modal-button" type="submit" onClick={(event) => closeModal(event)}>Search</button>
                 </div>
-            </motion.div>
+            </motion.form>
         </div>
     )
 }

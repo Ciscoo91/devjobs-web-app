@@ -4,21 +4,23 @@ import './Home.css'
 import Button from '../components/button/Button'
 import Card from '../components/card/Card'
 import Layout from '../Layout/Layout'
-import ModalContainer from '../components/modal/ModalContainer'
 import iconSearch from '../assets/desktop/icon-search.svg'
 import iconLocation from '../assets/desktop/icon-location.svg'
 import { JobPosting } from '../types'
-
+import Modal from "../components/modal/Modal"
+import {ReactComponent as IconSearch} from '../assets/desktop/icon-search.svg'
+import {ReactComponent as IconFilter} from '../assets/mobile/icon-filter.svg'
 
 const BASE_API_URL = "https://devjobs-app-api.onrender.com"
 
-function App(){
+function Home(){
   
   const {theme} = useContext(ThemeContext)
   const [jobPosts, setJobPosts] = useState<JobPosting[]>([])
   const [filter, setFilter] = useState<string>("")
   const [location, setLocation] = useState<string>("")
   const [fulltime, setFulltime] = useState<boolean>(false)
+  const [showModal, setShowModal] = useState<boolean>(false)
 
   const handleSearch = async (event: FormEvent<HTMLFormElement>): Promise<void> => {
     event.preventDefault();
@@ -50,6 +52,19 @@ function App(){
     }
   };
 
+  const renderModal = (event: React.MouseEvent) => {
+    event.stopPropagation()
+    setShowModal(true)
+  }
+
+
+  function handleLocationChange(event: ChangeEvent<HTMLInputElement>) {
+    setLocation(event.target.value);
+  }
+
+  function handleFulltimeChange(event: ChangeEvent<HTMLInputElement>) {
+    setFulltime(event.target.checked);
+  }
 
   useEffect(()=>{
     const getJobPosts = async () => {
@@ -68,7 +83,16 @@ function App(){
             <div className="form-control">
                 <img src={iconSearch} alt="loupe logo" />
                 <input placeholder="Filter by title, companies, expertise..." type="text" className='company-input' value={filter} name="filter" onChange={(e) => setFilter(e.target.value)}/>
-                <ModalContainer setJobPosts={setJobPosts} />
+                <>
+                  <button className="filter-icon" onClick={(event) => renderModal(event)}>
+                      <IconFilter className="filter__icon" 
+                          style={theme == "light" ? {backgroundColor: "#FFF"} : {backgroundColor: "#19212e"}}
+                      />
+                  </button>
+                  <button className={`mobile-search-button ${theme}`}>
+                      <IconSearch className='search__icon' />
+                  </button>
+                </>
             </div>
             <div className="form-control">
                 <img src={iconLocation} alt="" />
@@ -78,6 +102,7 @@ function App(){
                 <input id="fullTime" type="checkbox" name="fulltime" onChange={(e) => setFulltime(e.target.checked)}/>
                 <label htmlFor="fullTime">Full Time Only</label>
                 <Button>Search</Button>
+                
             </div>
         </form>
         <div className="card-container">
@@ -85,8 +110,9 @@ function App(){
           <Button>Load More</Button>
         </div>
       </main>
+      {showModal && <Modal setShowModal={setShowModal} showModal={showModal} handleLocationChange={handleLocationChange} handleFulltimeChange={handleFulltimeChange} handleSearch={handleSearch}/>}
     </Layout>
   )
 }
 
-export default App
+export default Home
