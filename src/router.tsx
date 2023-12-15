@@ -1,6 +1,7 @@
 import {createBrowserRouter} from "react-router-dom"
-import App from "./pages/Home"
-import JobDetail from "./pages/JobDetail"
+import App from "./pages/home/Home"
+import JobDetail from "./pages/jobdetail/JobDetail"
+import NotFound from "./pages/notFound/NotFound"
 
 export const router = createBrowserRouter([
     {
@@ -8,7 +9,11 @@ export const router = createBrowserRouter([
         element: <App />,
     },
     {
-        path: "/:jobId",
-        element: <JobDetail />
+        path: "jobs/:jobId",
+        element: <JobDetail />,
+    },
+    {
+        path: "*",
+        element: <NotFound/>
     }
 ])

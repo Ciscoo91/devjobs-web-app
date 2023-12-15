@@ -1,10 +1,10 @@
 import { useState, useEffect, useContext } from 'react'
 import {useParams} from 'react-router-dom'
-import { ThemeContext } from '../contexts/themeContext'
-import Button from '../components/button/Button'
-import Jobs from "../data.json"
-import Layout from '../Layout/Layout'
-import { JobPosting } from '../types'
+import { ThemeContext } from '../../contexts/themeContext'
+import Button from '../../components/button/Button'
+import Jobs from "../../data.json"
+import Layout from '../../Layout/Layout'
+import { JobPosting } from '../../types'
 import './JobDetail.css'
 
 type RouteParams = {
@@ -22,15 +22,17 @@ export default function JobDetail() {
 
   useEffect(()=>{
     const filteredJob: JobPosting = Jobs.filter((job) => job.id == id || null)[0]
+
+    if(!filteredJob){
+      throw new Error("No Job found !")
+    }
+
     setJobItem(filteredJob);
   }, [id])
 
-  if(!jobItem){
-    return <div>Loading....</div>
-  }
-
   return (
     <Layout>
+      {jobItem && <>
       <div className="details-page">
         <div className="details-page__container">
           <div className={`head-card head-card--${theme}`}>
@@ -81,6 +83,7 @@ export default function JobDetail() {
           <button className='button'>Apply Now</button>
         </div>
       </footer>
+      </>}
     </Layout>    
   )
 }

@@ -1,15 +1,15 @@
 import { useContext, useState, useEffect, FormEvent, ChangeEvent } from 'react'
-import { ThemeContext } from '../contexts/themeContext'
+import { ThemeContext } from '../../contexts/themeContext'
 import './Home.css'
-import Button from '../components/button/Button'
-import Card from '../components/card/Card'
-import Layout from '../Layout/Layout'
-import iconSearch from '../assets/desktop/icon-search.svg'
-import iconLocation from '../assets/desktop/icon-location.svg'
-import { JobPosting } from '../types'
-import Modal from "../components/modal/Modal"
-import {ReactComponent as IconSearch} from '../assets/desktop/icon-search.svg'
-import {ReactComponent as IconFilter} from '../assets/mobile/icon-filter.svg'
+import Button from '../../components/button/Button'
+import Card from '../../components/card/Card'
+import Layout from '../../Layout/Layout'
+import iconSearch from '../../assets/desktop/icon-search.svg'
+import iconLocation from '../../assets/desktop/icon-location.svg'
+import { JobPosting } from '../../types'
+import Modal from "../../components/modal/Modal"
+import {ReactComponent as IconSearch} from '../../assets/desktop/icon-search.svg'
+import {ReactComponent as IconFilter} from '../../assets/mobile/icon-filter.svg'
 
 const BASE_API_URL = "https://devjobs-app-api.onrender.com"
 

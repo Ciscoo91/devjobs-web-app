@@ -13,7 +13,7 @@ export default function Card({jobPost}: CardProps) {
   const {theme} = useContext(ThemeContext)  
   return (
     <div className={`card card-${theme}`}>
-      <Link key={`jobs/${jobPost.id}`} to={jobPost.id.toString()}>
+      <Link key={`jobs/${jobPost.id}`} to={`jobs/${jobPost.id}`}>
         <div className="logo" style={{backgroundColor: jobPost.logoBackground}}>
             <img src={jobPost.logo} alt="" />
         </div>
